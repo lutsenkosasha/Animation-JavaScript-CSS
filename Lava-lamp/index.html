@@ -1,0 +1,76 @@
+<!DOCTYPE html>               <!-- без этого не заработает  -->
+<html lang="en" >             <!-- подключение английского языка  -->
+<head>                        <!-- голова - заголовочная часть страницы -->
+  <meta charset="UTF-8">      <!-- подключение кодировки UTF-8 -->
+  <title>Лава-лампа</title>   <!-- заголовок в браузере так будет отображаться-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">   <!-- подключение файла через браузер, он автоматически скачается и выполниться -->
+  <link rel="stylesheet" href="main.css">     <!-- подключение файла main.css -->
+
+</head>
+<body>                        <!-- тело - середина страницы -->
+
+<!-- классы так названы по методологии БЭМ. Они наследуют свойства родителя и поэтому такие названия. Это очень грамотно выглядит -->
+<div class="scene">                                                 <!-- класс "сцена"-->
+  <div class="lava-lamp" style="--height: 400; --width: 150">       <!-- класс "лава-лампа", сразу указывыет высота 400px и ширина 150px -->
+    <div class="lava-lamp__main">                                   <!-- класс "лава-лампа__главный" -->
+      <div class="lava-lamp__glass">                                <!-- класс "лава-лампа__стекло" -->
+          <div class="lava-lamp__lava">                             <!-- класс "лава-лампа__лава" -->
+            <svg>                                                   <!-- контейнер svg (масштабируемая векторная графика) позволяет определить новую систему координат и область просмотра -->
+
+              <!-- ellipse - создание фигуры эллипса -->
+              <ellipse class="blob blob--top" cx="35" cy="0" rx="35" ry="10"></ellipse>       <!-- класс "капля капля--сверху".
+                                                                                              cx - позиция по X, cy - позиция по Y, rx - радиус по X, ry - радиус по Y -->
+              <ellipse class="blob blob--bottom" cx="75" cy="270" rx="75" ry="10"></ellipse>  <!-- класс "капля капля--снизу" -->
+
+              <!-- circle - создание фигуры круга. Класс у всех = "капля" -->
+              <!-- r - радиус, cx - позиция по X, cy - позиция по Y -->
+              <!-- Стили: skewX - искажение по оси X, skewY - искажение по оси Y, height - высота, speed - скорость движения, delay - задержка, direction - направление -->
+              <circle class="blob" r="41.5" cx="60" cy="400" style="--skewX: 5; --skewY: 1; --height: 83; --speed: 48; --delay: -4; --direction: alternate-reverse;"></circle>
+                                                                  <!-- direction: alternate-reverse - анимация меняет направление в каждом цикле, причем первая итерация воспроизводится в обратном направлении. -->
+              <circle class="blob" r="34" cx="5" cy="400" style="--skewX: 1; --skewY: 2; --height: 68; --speed: 14; --delay: 0; --direction: alternate;"></circle>
+                                                                  <!-- direction: alternate - анимация меняет направление в каждом цикле, при этом первая итерация воспроизводится вперед -->
+              <circle class="blob" r="34" cx="65" cy="400" style="--skewX: -1; --skewY: -2; --height: 68; --speed: 17; --delay: -8; --direction: alternate;"></circle>
+            </svg>
+          </div>
+          <div class="lava-lamp__lava">
+            <svg>
+              <ellipse class="blob blob--top" cx="35" cy="0" rx="35" ry="10"></ellipse>
+              <ellipse class="blob blob--bottom" cx="75" cy="270" rx="75" ry="10"></ellipse>
+              <circle class="blob" r="21" cx="55" cy="400" style="--skewX: -5; --skewY: -5; --height: 42; --speed: 33; --delay: -8; --direction: alternate;"></circle>
+              <circle class="blob" r="45.5" cx="88" cy="400" style="--skewX: -2; --skewY: -1; --height: 91; --speed: 47; --delay: -1; --direction: alternate;"></circle>
+              <circle class="blob" r="41.5" cx="66" cy="400" style="--skewX: -1; --skewY: -3; --height: 83; --speed: 11; --delay: -4; --direction: alternate-reverse;"></circle>
+              <circle class="blob" r="42" cx="57" cy="400" style="--skewX: -1; --skewY: -2; --height: 84; --speed: 39; --delay: -1; --direction: alternate-reverse;"></circle>
+            </svg>
+          </div>
+          <div class="lava-lamp__lava">
+            <svg>
+              <ellipse class="blob blob--top" cx="35" cy="0" rx="35" ry="10"></ellipse>
+              <ellipse class="blob blob--bottom" cx="75" cy="270" rx="75" ry="10"></ellipse>
+              <circle class="blob" r="23.5" cx="125" cy="400" style="--skewX: 3; --skewY: 1; --height: 47; --speed: 11; --delay: -3; --direction: alternate;"></circle>
+              <circle class="blob" r="46" cx="6" cy="400" style="--skewX: 4; --skewY: -3; --height: 92; --speed: 36; --delay: -7; --direction: alternate;"></circle>
+            </svg>
+          </div>
+          <div class="lava-lamp__lava">
+            <svg>
+              <ellipse class="blob blob--top" cx="35" cy="0" rx="35" ry="10"></ellipse>
+              <ellipse class="blob blob--bottom" cx="75" cy="270" rx="75" ry="10"></ellipse>
+              <circle class="blob" r="47" cx="81" cy="400" style="--skewX: 3; --skewY: -1; --height: 94; --speed: 44; --delay: 0; --direction: alternate;"></circle>
+            </svg>
+          </div>
+      </div>
+    </div>
+    <div class="lava-lamp__base"></div>                         <!-- класс "лава-лампа__база" -->
+  </div>
+  <svg style="position: absolute; left: 100%">      <!-- контейнер svg. Стили: position: absolute - с помощью этого можем позиционировать элемент на странице; left - отступ слева 100% -->
+    <defs>        <!-- в этом теге нужно задавать графические объекты для последующего использования -->
+      <filter id="goo">   <!-- создаем фильтр с названием "goo". Фильтр позволяет добавить графические эффекты, например, размытие -->
+        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="BLUR"></feGaussianBlur>      <!-- размытие картинки -->
+        <feColorMatrix in="BLUR" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="GOO"></feColorMatrix>    <!-- создание цветной матрицы -->
+        <feBlend in="SourceGraphic" in2="goo"></feBlend>      <!-- объединение двух слоёв изображения (как в фотошопе короче) -->
+      </filter>
+    </defs>
+  </svg>
+</div>
+
+</body>
+</html>

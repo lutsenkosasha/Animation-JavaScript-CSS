@@ -1,0 +1,32 @@
+<!DOCTYPE html>					 <!-- без этого не заработает  -->
+<html lang="en" >				<!-- подключение английского языка  -->
+<head>							<!-- голова - заголовочная часть страницы -->
+  <meta charset="UTF-8">		<!-- подключение кодировки UTF-8 -->
+  <title>Tower Blocks</title>	<!-- заголовок в браузере так будет отображаться-->
+  <link rel="stylesheet" href="main.css">	<!-- подключение файла main.css -->
+
+</head>
+<body>							 <!-- тело - середина страницы -->
+	
+<meta name="viewport" content="width=device-width,user-scalable=no">		<!-- мета-тег viewport позволяет адаптировать игру для мобильных устройств и растянуть ее на всю ширину экрана -->
+
+<div id="container">				<!-- блок "контейнер" -->
+	<div id="game"></div>			<!-- блок "игра" -->
+	<div id="score">0</div>			<!-- блок "счёт" -->
+	<div id="instructions">Нажмите ЛКМ (или нажмите клавишу пробела), чтобы поместить блок</div>	<!-- блок "инструкции" -->
+	<div class="game-over">			<!-- класс "игра окончена" -->
+		<h2>Игра окончена</h2>				<!-- текст -->
+		<p>Ты молодец, ты лучший.</p>
+		<p>Нажмите ЛКМ или пробел, чтобы начать снова</p>
+	</div>
+	<div class="game-ready">		<!-- класс "игра готова" -->
+		<div id="start-button">Начать</div>		<!-- блок "кнопка старта" -->
+		<div></div>
+	</div>
+</div>
+<script src='https://codepen.io/ste-vg/pen/zBVaZw.js'></script>									<!-- подключение скриптов. Браузер автоматически их скачивает и выполняет -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js'></script><script  src="script.js"></script>		<!-- последний скрипт - наш файл в папке -->
+
+</body>
+</html>

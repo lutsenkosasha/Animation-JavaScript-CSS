@@ -1,0 +1,165 @@
+* {                         /* стили для всех элементов */
+  box-sizing: border-box;   /* вычисляем общую высоту и ширину экрана */
+}
+body {                      /* стили для body */
+  background: #1c0136;    /* цвет фона */
+  min-height: 100vh;        /* минимальная высота = 100% от высоты окна браузера */
+}
+.scene {                    /* стили для сцены */
+  display: flex;            /* подключение flex-боксов */
+  align-items: center;      /* выравнивание по оси Y по центру экрана */
+  justify-content: center;  /* выравнивание по оси X по центру экрана */
+  width: 100vw;             /* ширина 100% от ширины окна браузера */
+  position: relative;       /* с помощью этого можем позиционировать элемент на странице */
+  height: 100vh;            /* высота 100% от высоты окна браузера */
+  overflow-x: hidden;       /* если содержимое строки выходит за границы элемента, то содержимое обрезается */
+}
+.lava-lamp {                          /* стили для лава-лампы */
+  height: calc(var(--height) * 1px);  /* вычисляется высота */
+  width: calc(var(--width) * 1px);    /* вычисляется ширина */
+  position: relative;                 /* с помощью этого можем позиционировать элемент на странице */
+}
+.lava-lamp:after {                    /* стили, которые можно добавить после элемента lava-lamp */
+  content: '';                        /* вставка пустой строки */
+  height: 500px;                      /* высота */
+  width: 500px;                       /* ширина */
+  position: absolute;                 /* с помощью этого можем позиционировать элемент на странице */
+  background: radial-gradient(circle at 50% 50%, #19b5fe, transparent 60%);   /* градиентный цвет фона */
+  top: 45%;                           /* отступ сверху */
+  left: 50%;                          /* отступ слева */
+  z-index: 4;                         /* стабилизация порядка элементов, которые перекрываются и заходят друг на друга. Чем выше число, тем больше приоритет */
+  transform: translate(-50%, -50%);   /* перемещение */
+  filter: blur(10px);                 /* размытие (заблюрить) */
+  opacity: 0.5;                       /* непрозрачность */
+}
+.lava-lamp:before {                     /* стили, которые можно добавить до элемента lava-lamp */
+  content: '';                          /* вставка пустой строки */
+  height: 25%;                          /* высота */
+  width: 300%;                          /* ширина */
+  border-radius: 100%;                  /* радиус закругления */
+  background: radial-gradient(ellipse at 50% 50%, #19b5fe, transparent 60%);    /* градиентный цвет фона */
+  position: absolute;                   /* с помощью этого можем позиционировать элемент на странице */
+  top: 85%;                             /* отступ сверху */
+  left: 50%;                            /* отступ слева */
+  transform: translate(-50%, 0);        /* перемещение */
+  opacity: 0.5;                         /* непрозрачность */
+  filter: blur(10px);                   /* размытие (заблюрить) */
+}
+.lava-lamp__main {                      /* стили для лава-лампа__главный */
+  border-radius: 50% 50% 50% 50%/60% 60% 40% 40%;   /* радиус закругления */
+  width: 100%;                                      /* ширина */
+  height: 100%;                                     /* высота */
+  position: relative;                               /* с помощью этого можем позиционировать элемент на странице */
+  overflow: hidden;                                 /* если содержимое элемента выходит за его границы, то содержимое обрезается */
+  z-index: 2;                                       /* стабилизация порядка элементов, которые перекрываются и заходят друг на друга. Чем выше число, тем больше приоритет */
+}
+.lava-lamp__main:after,
+.lava-lamp__main:before {                           /* стили, которые можно добавить до и после элемента lava-lamp__main */
+  background: #000;                               /* цвет фона */
+  content: '';                                      /* вставка пустой строки */
+  height: 12%;                                      /* высота */
+  left: 0;                                          /* отступ слева */
+  position: absolute;                               /* с помощью этого можем позиционировать элемент на странице */
+  width: 100%;                                      /* ширина */
+}
+.lava-lamp__main:after {                             /* стили, которые можно добавить после элемента lava-lamp__main */
+  top: 0;                                            /* отступ сверху */
+}
+.lava-lamp__main:before {                             /* стили, которые можно добавить до элемента lava-lamp__main */
+  bottom: 0;                                          /* отступ снизу */
+  height: 26%;                                        /* высота */
+}
+.lava-lamp__glass {                                   /* стили для класса лава-лампа__стекло */
+  background: radial-gradient(circle at 50% 50%, #3a539b 25%, #19b5fe);     /* градиентный цвет фона */
+  border-radius: 50%/10%;                             /* радиус закругления */
+  overflow: hidden;                                   /* если содержимое элемента выходит за его границы, то содержимое обрезается */
+  height: 70%;                                        /* высота */
+  left: 0;                                            /* отступ слева */
+  position: absolute;                                 /* с помощью этого можем позиционировать элемент на странице */
+  top: 10%;                                           /* отступ сверху */
+  width: 100%;                                        /* ширина */
+  z-index: 2;                                         /* стабилизация порядка элементов, которые перекрываются и заходят друг на друга. Чем выше число, тем больше приоритет */
+}
+.lava-lamp__base {                                    /* стили для класса лава-лампа__база */
+  height: 20%;                                        /* высота */
+  width: 100%;                                        /* ширина */
+  position: absolute;                                 /* с помощью этого можем позиционировать элемент на странице */
+  bottom: 0;                                          /* отступ снизу */
+  overflow: hidden;                                   /* если содержимое элемента выходит за его границы, то содержимое обрезается */
+  border-radius: 0 0 50% 50%/0 0 35% 35%;             /* радиус закругления */
+}
+.lava-lamp__base:before {                             /* стили, которые можно добавить до элемента lava-lamp__base */
+  content: '';                                        /* вставка пустой строки */
+  background: #000;                                 /* цвет фона */
+  border-radius: 50% 50% 50% 50%/60% 60% 40% 40%;     /* радиус закругления */
+  position: absolute;                                 /* с помощью этого можем позиционировать элемент на странице */
+  top: -60%;                                          /* отступ сверху */
+  height: calc(var(--height) * 1px);                  /* высота */
+  width: calc(var(--width) * 1px);                    /* ширина */
+}
+.lava-lamp__lava {                                    /* стили для класса лава-лампа__лава */
+  border-radius: 50%/10%;                             /* радиус закругления */
+  height: 100%;                                       /* высота */
+  overflow: hidden;                                   /* если содержимое элемента выходит за его границы, то содержимое обрезается */
+  position: absolute;                                 /* с помощью этого можем позиционировать элемент на странице */
+  width: 100%;                                        /* ширина */
+  filter: url("#goo");                                /* подключаем фильтр под названием "goo" */
+}
+.lava-lamp__lava svg {                                /* стили для всех svg, которые являются потомками класса lava-lamp__lava */
+  height: 280px;                                      /* высота */
+  width: 150px;                                       /* ширина */
+}
+
+/* везде, где есть приставка "-webkit-" - это свойство дает возможность браузеру Chrome выполнять анимацию */
+
+.blob {                                               /* стили для капель */
+  -webkit-animation-delay: calc(var(--delay) * 1s);   /* задержка перед началом анимации */
+          animation-delay: calc(var(--delay) * 1s);
+  -webkit-animation-direction: var(--direction);      /* направление анимации */
+          animation-direction: var(--direction);
+  -webkit-animation-duration: calc(var(--speed) * 1s);  /* с какой скоростью анимация будет двигаться */
+          animation-duration: calc(var(--speed) * 1s);
+  -webkit-animation-iteration-count: infinite;          /* кол-во повторов анимации: бесконечное */
+          animation-iteration-count: infinite;
+  -webkit-animation-name: blob;                         /* название анимации - blob */
+          animation-name: blob;
+  -webkit-animation-timing-function: linear;            /* плавность анимации - линейная (анимация с одинаковой скоростью) */
+          animation-timing-function: linear;
+  fill: #29f1c3;                                      /* заливка фигуры svg */
+  transform-box: fill-box;                              /* определяем область элемента, к которому применяется анимация */
+}
+.blob--bottom,
+.blob--top {                                            /* стили для капель сверху и капель снизу */
+  -webkit-animation: none;
+          animation: none;                              /* остановка анимации */
+}
+.blob--top {                                            /* стили для капель сверху */
+  -webkit-animation: sway 20s infinite linear;          /* анимация. sway - название анимации, 20s - длительность анимации, */
+  animation: sway 20s infinite linear;                  /* infinite (бесконечность) - кол-во повторов анимации, linear (линейная) - плавность анимации */
+}
+@-webkit-keyframes sway {                               /* ключевые кадры - здесь и просходит анимация */
+  50% {                                                 /* типо контрольная точка, когда длительность анимации дошла до половины, то применяется: */
+    transform: translate(50%, 0);                       /* перемещение */
+  }
+}
+@keyframes sway {                                   
+  50% {
+    transform: translate(50%, 0);
+  }
+}
+@-webkit-keyframes blob {                             /* анимация */
+  from {                                              /* начальная точка */
+    transform: skew(calc(var(--skewX) * 1deg), calc(var(--skewY) * 1deg)) translate(0, 0);                                          /* искажение элемента и его перемещение */
+  }
+  to {                                                /* конечная точка */
+    transform: skew(calc(var(--skewX) * 1deg), calc(var(--skewY) * 1deg)) translate(0, calc((400 + (var(--height) * 2)) * -1px));   /* искажение элемента и его перемещение */
+  }
+}
+@keyframes blob {
+  from {
+    transform: skew(calc(var(--skewX) * 1deg), calc(var(--skewY) * 1deg)) translate(0, 0);
+  }
+  to {
+    transform: skew(calc(var(--skewX) * 1deg), calc(var(--skewY) * 1deg)) translate(0, calc((400 + (var(--height) * 2)) * -1px));
+  }
+}
